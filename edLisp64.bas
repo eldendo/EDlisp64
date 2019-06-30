@@ -53,31 +53,35 @@
 5030 return
 
 6000 rem *** push ***
-6010 rem *** ts -> stack
+6010 rem *** s -> stack
 6020 if sp>=ns then print"stack overflow":stop
-6030 s(sp)=ts:sp=sp+1
+6030 s(sp)=s:sp=sp+1
 6040 return
 
 6100 rem *** pull ***
-6110 rem *** stack -> ts
+6110 rem *** stack -> s
 6120 if sp<=0 then print"stack underflow":stop
-6130 sp=sp-1:ts=s(sp)
+6130 sp=sp-1:s=s(sp)
 6140 return
 
 6400 rem *** consblock constructor ***
-6420 rem *** (new block) -> se
+6420 rem *** (stack.stack) -> stack
 6430 if bp>=nb then print "out of consblocks":stop
-6440 se=bp:bp=bp+1
-6450 return
+6440 gosub 6100: cdr(bp)=s: rem pull cdr
+6450 gosub 6100: car(bp)=s: rem pull car
+6460 s=bp:gosub 6000:rem push
+6470 bp=bp+1
+6480 return
 
 6500 rem *** atom constructor *** 
-6510 rem *** at$ -> se
+6510 rem *** at$ -> stack
 6520 for i=0 to ap-1 
-6530 if at$(i)=at$ then se=-i-1:return
+6530 if at$(i)=at$ then s=-i-1:goto 6570
 6540 next i  
 6550 if ap>=na then print "out of atoms":stop
-6560 at$(ap)=at$:se=-ap-1:ap=ap+1
-6570 return
+6560 at$(ap)=at$:s=-ap-1:ap=ap+1
+6570 gosub 6000: rem push
+6580 return
 
 9000 rem *** free memory ***
 9010 print na-ap;"of";na;" atoms free"
@@ -86,3 +90,9 @@
 9040 print fre(0)+2^16;" basic bytes free"
 9050 print
 9060 return
+
+10000 rem *** test ***
+10010 at$="hello":gosub 6500
+10020 at$="world":gosub 6500
+10030 gosub 6400
+10040 gosub 6100: print at$(-car(s)-1),at$(-cdr(s)-1)
