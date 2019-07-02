@@ -1,11 +1,11 @@
-#EDlisp64
+# EDlisp64
 ### A Very Minimal List Processor for the Commodore 64
 
 **(c)2019 by ir. Marc 'EL Dendo' Dendooven**
 
 This is a draft... Please endulge my poor english. 
 
-##Part I: Introduction
+## Part I: Introduction
 LISP is one of the oldest computer languages, but a very interesting one. The study of the internals of a **LIS**t **P**rocessor gives a very interesting new insight in computing. It shouldn't surprise us that a lot of interesting books about computing use **LISP** or **SCHEME** (a dialect of LISP) as language. A good example is the so called 'wizard book' aka [Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sites/default/files/sicp/index.html) **(SICP)** by Abelson and Sussman.
 
 Building a List Processor is a very interesting task. But almost every book about LISP builds its own as a metacircular interpreter, that is a LISP interpreter build in LISP. Indeed this is very simple to explain since a lot of machine dependent functionality (like a parser, printer and memory management) are simply inherited from the mother system. Building a lisp interpreter from scratch in an imperative language is almost always left as an exercise to the reader. 
