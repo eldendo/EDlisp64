@@ -1,7 +1,5 @@
 # EDlisp64
-a very minimal list processor for the c64  
-Under construction  
+a very minimal list processor for the c64 
+It is very slow, but it works
 
-Current version:  
-Just a simple frame for further development
 ![screenshot](./edlisp015.png)
