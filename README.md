@@ -5,6 +5,7 @@ implemented are: nil,#t,quote,cond,car,cdr,cons,atom?,eq? and lambda.
 console commands: define,ctx,exit and free.  
   
 not implemented: numbers, garbage collection, tail recursion optimisation, ...  
+There is room for a lot of optimisation (like using integer arrays instead of real arrays)  
 I will probably not continue this program in basic. consider it as a proof of concept.    
 
 
